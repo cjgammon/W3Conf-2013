@@ -1,0 +1,72 @@
+<html>
+   <head>
+      <title>font family tester</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<script src="http://use.edgefonts.net/open-sans:n3,i3,n4,i4,n6,i6,n7,i7,n8.js"></script>
+	<script src="http://use.edgefonts.net/alice:n4.js"></script>
+	<script src="http://use.edgefonts.net/bebas-neue:n4.js"></script>
+	<link rel="stylesheet" type="text/css" href="../styles/style.css">
+
+	<style>
+		
+	</style> 
+   </head>
+   <body onload="init()">
+		<div id="container">
+			<div class="side">
+				<div id="controller">
+					<span><b>Heading</b></span>
+					<input id="headerInput" type="range" min="-10" max="10" step="1" value="0"/>
+					<span id="headerValue" class="value">0px</span>
+					<br/>
+					<span><b>Body</b></span>
+					<input id="bodyInput" type="range" min="-10" max="10" step="1" value="0"/>
+					<span id="bodyValue" class="value">0px</span>	
+				</div>
+				<div id="workspace">
+					<h1>My Incredibly Awesome Story</h1>
+					<span id="work-copy">
+						<p>Once there was a <b>hornless unicorn</b>, he would wander around and frolic with all the forest creatures. There were frogs and bears and lions. One day the fearless lion asked the hornless unicorn why it didn't have a horn. To which, the hornless unicorn replied, I was born without it.</p>
+						<p>The bear then said, doesn't that just make you a horse? The hornless unicorn said, no. My parents were unicorns, their parents were unicorns, plus...</p>
+						<p>All the animals went about their business as though nothing had happened. Then one day the fearless lion asked the hornless unicorn why it didn't have a horn. To which, the hornless unicorn replied, I was born without it.</p>
+					</span>
+				</div>
+			</div>
+		</div>
+   </body>
+
+	<script src="../scripts/main.js"></script>
+   <script type="text/javascript">
+		var headerInput,
+			bodyInput;
+			
+		function handle_headerInput_CHANGE(e) {
+			var header = document.getElementsByTagName('h1')[0];
+			header.style.letterSpacing = headerInput.value + 'px';
+			headerValue.innerHTML = headerInput.value + 'px';
+		}
+		
+		function handle_bodyInput_CHANGE(e) {
+			//var body = document.getElementById('workspace');
+			var body = document.getElementById('work-copy');
+			body.style.letterSpacing = bodyInput.value + 'px';
+			bodyValue.innerHTML = bodyInput.value + 'px';
+		}
+			
+		function init() {
+			headerInput = document.getElementById('headerInput');
+			bodyInput = document.getElementById('bodyInput');
+			
+			headerInput.addEventListener('change', handle_headerInput_CHANGE);
+			bodyInput.addEventListener('change', handle_bodyInput_CHANGE);
+			/*
+			document.addEventListener('keydown', function (e) {
+				e.preventDefault();
+			});
+			*/
+		}
+				
+   </script>
+
+   
+</html>

@@ -1,0 +1,91 @@
+<html>
+   <head>
+      <title>font family tester</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<script src="http://use.edgefonts.net/open-sans:n3,i3,n4,i4,n6,i6,n7,i7,n8.js"></script>
+	<script src="http://use.edgefonts.net/alice:n4.js"></script>
+	<script src="http://use.edgefonts.net/bebas-neue:n4.js"></script>
+	<link rel="stylesheet" type="text/css" href="../styles/style.css">
+
+	<style>
+		#container{
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-box-pack: center;
+			-webkit-box-align: center;
+		}
+		
+		h2{
+			margin: .5em;
+			padding: .5em;
+			color: #f4f4f4;
+			background: #3c3c3c;
+			font-family: monospace;
+			font-size: 1.5rem;
+			font-weight: normal;
+		}
+		
+		.words{
+			-webkit-flex: 1;
+			padding-top: 1rem;
+		}
+		
+		p{
+			font-size: 5rem;
+			font-family: Constantia;
+			margin: .5em;
+			padding: 0;
+		}
+		
+		.optimize{
+			text-rendering: optimizeLegibility;
+		}
+	</style> 
+   </head>
+   <body onload="init()">
+		<div id="container">
+			<h2>text-rendering: optimizeLegibility;</h2>
+			<div class="words">
+				<p>Ta Yo Wa Va</p>
+				<p class="optimize">Ta Yo Wa Va</p>
+				<p>ff fi fl ffl</p>
+				<p class="optimize">ff fi fl ffl</p>
+			</div>
+		</div>
+   </body>
+
+	<script src="../scripts/main.js"></script>
+   <script type="text/javascript">
+		var headerInput,
+			bodyInput;
+			
+		function handle_headerInput_CHANGE(e) {
+			var header = document.getElementsByTagName('h1')[0];
+			header.style.letterSpacing = headerInput.value + 'px';
+			headerValue.innerHTML = headerInput.value + 'px';
+		}
+		
+		function handle_bodyInput_CHANGE(e) {
+			//var body = document.getElementById('workspace');
+			var body = document.getElementById('work-copy');
+			body.style.letterSpacing = bodyInput.value + 'px';
+			bodyValue.innerHTML = bodyInput.value + 'px';
+		}
+			
+		function init() {
+			headerInput = document.getElementById('headerInput');
+			bodyInput = document.getElementById('bodyInput');
+			
+			headerInput.addEventListener('change', handle_headerInput_CHANGE);
+			bodyInput.addEventListener('change', handle_bodyInput_CHANGE);
+			/*
+			document.addEventListener('keydown', function (e) {
+				e.preventDefault();
+			});
+			*/
+		}
+				
+   </script>
+
+   
+</html>

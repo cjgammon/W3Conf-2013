@@ -1,0 +1,99 @@
+<html>
+   <head>
+      <title>font family tester</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<script src="http://use.edgefonts.net/open-sans:n3,i3,n4,i4,n6,i6,n7,i7,n8.js"></script>
+	<script src="http://use.edgefonts.net/bebas-neue:n4.js"></script>
+	<script src="http://use.edgefonts.net/alice:n4.js"></script>
+	<link rel="stylesheet" type="text/css" href="../styles/style.css">
+
+	<style>
+		#fontArea{
+			font-family: serif;
+		}
+		
+		#fontArea.one{
+			font-family: 'Alice', alice;
+		}
+		
+		#fontArea.two{
+			font-family: 'Alice', alice;			
+		}
+		
+		#fontArea.two > h1, #fontArea.two > h2{
+			font-family: 'Bebas Neue', bebas-neue;
+		}
+		
+		#fontArea.twenty{
+			font-family: 'Open Sans', open-sans;
+		}
+		
+		#fontArea.twenty > h1{
+			font-family: 'Bebas Neue', bebas-neue;
+		}
+		
+		#fontArea.twenty > h2{
+			font-family: georgia;
+		}
+		
+		#fontArea.twenty p:nth-child(4){
+			font-family: alice;
+		}
+		
+		#fontArea.twenty b{
+			font-family: serif;
+		}
+		
+		#fontArea.twenty > blockquote{
+			font-family: 'Futura';
+		}
+		
+	</style> 
+   </head>
+   <body onload="init()">
+	<div id="container">
+
+		<div class="side">
+			<div id="controller">
+				<ul>
+					<li data-class="zero">0</li>
+					<li data-class="one">1</li>
+					<li data-class="two">2</li>
+					<li data-class="twenty">?!</li>
+				</ul>
+			</div>
+			<div id="fontArea">
+				<h1>My Incredibly Awesome Story</h1>
+				<p>Once there was a <b>hornless unicorn</b>, he would wander around and frolic with all the forest creatures. There were frogs and bears and lions. One day the fearless lion asked the hornless unicorn why it didn't have a horn. To which, the hornless unicorn replied, I was born without it.</p>
+				<h2>The Plot Thickens</h2>
+				<p>The bear then said, doesn't that just make you a horse? The hornless unicorn said, no. My parents were unicorns, their parents were unicorns, plus...</p>
+				<blockquote>&ldquo;You are what you believe.&rdquo;</blockquote>
+				<p>All the animals went about their business as though nothing had happened. Then one day the fearless lion asked the hornless unicorn why it didn't have a horn. To which, the hornless unicorn replied, I was born without it.</p>
+			</div>
+		</div>
+	</div>
+   </body>
+
+	<script src="../scripts/main.js"></script>
+   <script type="text/javascript">
+		function handle_li_MOUSEDOWN(e) {
+			var body = document.getElementById('fontArea');
+			body.className = e.target.getAttribute('data-class')
+		}
+		
+		function init() {
+			var list = document.getElementsByTagName('li');
+			
+			for (var i = 0; i < list.length; i += 1) {
+				list[i].addEventListener('mousedown', handle_li_MOUSEDOWN)
+			}
+			
+			document.addEventListener('keydown', function (e) {
+				e.preventDefault();
+			});
+		}
+				
+   </script>
+
+   
+</html>

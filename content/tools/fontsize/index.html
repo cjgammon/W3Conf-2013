@@ -1,0 +1,268 @@
+<html>
+   <head>
+      <title>font size tester</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    
+	<script src="http://use.edgefonts.net/open-sans:n3,i3,n4,i4,n6,i6,n7,i7,n8.js"></script> 
+	<script src="http://use.edgefonts.net/bebas-neue:n4.js"></script>
+	 <link rel="stylesheet" type="text/css" href="../styles/style.css">
+	
+	<style>
+		html, body{
+			font-size: 100%;
+			line-height: 18px;
+			font-family: 'Open Sans', open-sans;
+		}
+		
+		.side{
+			max-width: 700px;
+			margin: auto;
+		}
+		
+		.cube{
+			display: block;
+			position: relative;
+			padding: 5px;
+			margin: 10px;
+			min-height: 70px;
+			overflow: hidden;
+			vertical-align: top;
+			pointer-events: none;
+			background: #f4f4f4;
+		}
+		
+		.em{
+			font-size: 1em;
+			line-height: 1em;
+		}
+		
+		.px{
+			font-size: 16px;
+			line-height: 16px;
+		}
+		
+		.pt{
+			font-size: 12pt;
+			line-height: 12pt;
+		}
+		
+		.rem{
+			font-size: 1rem;
+			line-height: 1rem;
+		}
+		
+		.pc{
+			font-size: 100%;
+			line-height: 100%;
+		}
+		
+		.example{
+			position: relative;
+			display: block;
+			margin-left: 90px;
+			padding: 20px 0;
+			pointer-events: none;
+			z-index: 3;
+		}
+		
+		.lbl{
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			left: 0px;
+			min-width: 60px;
+			display: block;
+			color: #333;
+			padding: 30px 10px;
+			font-size: 24px;
+			font-weight: 600;
+			background: #ddd;
+			z-index: 0;
+		}
+		
+		.totals{
+			font-weight: 600;
+		}
+		
+		.calc{
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			right: 0px;
+			padding: 30px 10px;
+			font-size: 24px;
+			color: black;
+			background: #ccc;
+			opacity: .5;
+		}
+		
+		.totals td{
+			background-color: #bbb;
+		}
+		
+		#examples{
+			position: relative;
+			margin: 120px auto 20px;
+			padding: 100px 20px 20px;
+			background-color: #3a3a45;
+			border-radius: 3px;			
+		}
+		
+		#examples table{
+			margin-left: 15px;
+			color: #f4f4f4;
+		}
+		
+		#examples table .value{
+			color: #f4f4f4;
+		}
+		
+		table{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 250px;
+			padding: 15px 10px;
+			margin: auto;
+		}
+		
+		input{
+			width: 150px;
+		}
+		
+		b{
+			font-size: 32px;
+		}
+		
+      </style>
+   </head>
+   <body onload="init()">
+	<div id="container">
+
+		<div class="side">
+		
+			<table>
+				<tr>
+					<td><span><b>Root</b></span></td>
+				</tr>
+				<tr>
+					<td><input id="input" type="range" min="10" max="400" step="5" value="100"/></td>
+					<td><span id="bodyValue" class="value">100%</span></td>
+				</tr>
+			</table>
+		
+		<div id="examples">
+			
+			<table>
+				<tr>
+					<td><span id="containerTxt"><b>Container</b></span></td>
+				</tr>
+				<tr>
+					<td><input id="inputCube" type="range" min="10" max="400" step="5" value="100"/></td>
+					<td><span id="cubeValue" class="value">100%</span></td>
+				</tr>
+			</table>
+			
+			<div class="cube">
+				<span class="lbl">1 EM</span>
+				<span class="example em"></span>
+				<span id="calculatedEM" class="calc"></span>
+			</div>
+			<!--
+			<div class="cube">
+				<span class="lbl">100 %</span>
+				<span class="example pc"></span>
+				<span id="calculatedPC" class="calc"></span>
+			</div>
+			-->
+			<div class="cube">
+				<span class="lbl">1 REM</span>
+				<span class="example rem"></span>
+				<span id="calculatedREM" class="calc"></span>
+			</div>
+			<div class="cube">
+				<span class="lbl">16 PX</span>
+				<span class="example px"></span>
+				<span id="calculatedPX" class="calc"></span>
+			</div>
+			<!--
+			<div class="cube">
+				<span class="lbl">12 PT</span>
+				<span class="example pt"></span>
+				<span id="calculatedPT" class="calc"></span>
+			</div>
+			-->
+			</div>
+		</div>
+		</div>
+   </body>
+
+	<script src="../scripts/main.js"></script>
+   <script type="text/javascript">
+		//TODO set body font size
+		var input,
+			inputCube;
+		
+		function updateCalculatedValues() {
+			var calculatedEM = document.getElementById('calculatedEM'),
+				//calculatedPC = document.getElementById('calculatedPC'),
+				calculatedPX = document.getElementById('calculatedPX'),
+				//calculatedPT = document.getElementById('calculatedPT'),
+				calculatedREM = document.getElementById('calculatedREM'),
+				pxValue = 16,
+				suffixString = 'px',
+				convertEMToPX = (input.value / 100) * (inputCube.value / 100) * pxValue;
+			
+			calculatedEM.innerHTML = Math.round(convertEMToPX) + suffixString;
+			//calculatedPC.innerHTML = Math.round(convertEMToPX) + suffixString;
+			calculatedPX.innerHTML = pxValue + suffixString;
+			//calculatedPT.innerHTML = pxValue + suffixString;
+			calculatedREM.innerHTML = Math.round((input.value / 100) * pxValue) + suffixString;
+			
+		}
+		
+		function handle_input_CHANGE(e) {
+			var htmlElement = document.getElementsByTagName("html")[0];
+			htmlElement.style.fontSize = input.value + "%";
+			
+			var text = document.getElementById('bodyValue');
+			text.innerHTML = input.value + "%";
+			
+			updateCalculatedValues();
+		}
+		
+		function handle_inputCube_CHANGE(e) {
+			/*
+			var cubes = document.getElementsByClassName('cube');
+			for (var i=0; i < cubes.length; i += 1) {
+				cubes[i].style.fontSize = inputCube.value + "%";
+			}
+			*/
+			var cubes = document.getElementById('examples');
+			cubes.style.fontSize = inputCube.value + "%";
+			
+			var text = document.getElementById('cubeValue');
+			text.innerHTML = inputCube.value + "%";
+			
+			updateCalculatedValues();
+		}
+		
+		function init() {
+			input = document.getElementById('input');
+			inputCube = document.getElementById('inputCube');
+			examples = document.getElementsByClassName('example');
+			
+			for (var i=0; i < examples.length; i += 1) {
+				examples[i].innerHTML = "Let's be friends.";
+			}
+			
+			inputCube.addEventListener('change', handle_inputCube_CHANGE);
+			input.addEventListener('change', handle_input_CHANGE);
+			
+			updateCalculatedValues();
+		}
+				
+   </script>
+
+   
+</html>
