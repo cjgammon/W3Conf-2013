@@ -8,7 +8,7 @@ define([], function(require) {
         TouchController = require('core/controllers/TouchController'),
         UserEvent = require('core/events/UserEvent'),
         AppEvent = require('core/events/AppEvent'),
-        InView = require('core/InView'),
+        InView = require('core/inview'),
         stroll = require('vendor/stroll/js/stroll'),
         stellar = require('vendor/jquery.stellar'),
 

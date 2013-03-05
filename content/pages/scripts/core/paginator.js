@@ -1,8 +1,8 @@
 /*global define*/
 define(['core/model', 
         'core/events/UserEvent', 
-        'core/paginator/Article', 
-        'core/paginator/Page',
+        'core/paginator/article', 
+        'core/paginator/page',
         'core/hud'], 
         function(Model, UserEvent, Article, Page, HUD) {
 
