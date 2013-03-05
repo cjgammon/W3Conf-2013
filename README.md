@@ -4,6 +4,9 @@ Note: The demos and examples use experimental features that can be enabled in ch
 Do Androids Read Electric Books?
 ================================
 
+view presentation online here:
+http://cjgammon.github.com/electricbooks/
+
 HTML5 presentation on digital reading experiences.
 
 How To Use
